@@ -66,7 +66,7 @@ nato_spelling = {
 def print_spelling(word: str, spelling_map: Dict[str, str]) -> None:
     for letter in word:
         print(letter, ': ', sep='', end='')
-        print(spelling_map.get(letter, letter))
+        print(spelling_map.get(letter.lower(), letter))
 
 
 def main() -> None:
