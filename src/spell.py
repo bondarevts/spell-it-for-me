@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
-
-import sys
 import argparse
-from typing import Dict
 
 law_enforcement_spelling = {
     "a": "Adam",
@@ -73,9 +70,9 @@ parser.add_argument(
     default="nato",
     choices=["nato", "law_enforcement"],
     dest="alphabet",
-
 )
 parser.add_argument(dest="phrase")
+parser.add_argument("--print-letter", default=1, dest="print_letter")
 
 
 def print_spelling(args: argparse.ArgumentParser) -> None:
@@ -84,9 +81,10 @@ def print_spelling(args: argparse.ArgumentParser) -> None:
     elif args.alphabet == "law_enforcement":
         spelling_map = law_enforcement_spelling
     else:
-        raise ValueError(f"Improper alphabet arg, must be {args['alphabet'].choices}")
+        raise ValueError(f"Improper alphabet arg, must be {args.alphabet.choices}")
     for letter in args.phrase:
-        print(letter, ": ", sep="", end="")
+        if args.print_letter == 1:
+            print(letter, ": ", sep="", end="")
         print(spelling_map.get(letter.lower(), letter))
 
 
