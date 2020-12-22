@@ -71,9 +71,21 @@ parser.add_argument(
     default="nato",
     choices=["nato", "police"],
     dest="alphabet",
+    help="Defaults to NATO phonetic alphabet: Álfa Brávo Chárlie..., "
+    "can also use police: Adam Boston Charles...",
 )
-parser.add_argument("--verbose", "-v", action="store_true", dest="verbose")
-parser.add_argument(dest="phrase", nargs="+")
+parser.add_argument(
+    "--verbose",
+    "-v",
+    action="store_true",
+    dest="verbose",
+    help="Print the original letter before each phonetic alphabet word",
+)
+parser.add_argument(
+    dest="phrase",
+    nargs="+",
+    help="The word or phrase you want to spell using a phonetic alphabet",
+)
 
 
 def print_spelling(args: argparse.ArgumentParser) -> None:
