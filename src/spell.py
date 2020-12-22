@@ -2,7 +2,7 @@
 from __future__ import print_function
 import argparse
 
-law_enforcement_spelling = {
+police_spelling = {
     "a": "Adam",
     "b": "Boston",
     "c": "Charles",
@@ -67,23 +67,26 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument(
     "--alphabet",
+    "-a",
     default="nato",
-    choices=["nato", "law_enforcement"],
+    choices=["nato", "police"],
     dest="alphabet",
 )
-parser.add_argument(dest="phrase")
-parser.add_argument("--print-letter", default=1, dest="print_letter")
+parser.add_argument("--verbose", "-v", action="store_true", dest="verbose")
+parser.add_argument(dest="phrase", nargs="+")
 
 
 def print_spelling(args: argparse.ArgumentParser) -> None:
     if args.alphabet == "nato":
         spelling_map = nato_spelling
-    elif args.alphabet == "law_enforcement":
-        spelling_map = law_enforcement_spelling
+    elif args.alphabet == "police":
+        spelling_map = police_spelling
     else:
         raise ValueError(f"Improper alphabet arg, must be {args.alphabet.choices}")
-    for letter in args.phrase:
-        if args.print_letter == 1:
+    for letter in " ".join(args.phrase):
+        if not spelling_map.get(letter.lower(), False):
+            continue
+        if args.verbose:
             print(letter, ": ", sep="", end="")
         print(spelling_map.get(letter.lower(), letter))
 
