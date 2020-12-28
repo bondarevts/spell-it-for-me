@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup(
     name='spell-it-for-me',
-    version='0.1.1',
+    version='0.2.1',
     url='https://github.com/bondarevts/spell-it-for-me',
     author='Timofei Bondarev',
     author_email='bondarevts@gmail.com',
@@ -18,10 +18,7 @@ setup(
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
