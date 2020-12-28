@@ -96,8 +96,6 @@ def print_spelling(args: argparse.ArgumentParser) -> None:
     else:
         raise ValueError(f"Improper alphabet arg, must be {args.alphabet.choices}")
     for letter in " ".join(args.phrase):
-        if not spelling_map.get(letter.lower(), False):
-            continue
         if args.verbose:
             print(letter, ": ", sep="", end="")
         print(spelling_map.get(letter.lower(), letter))
